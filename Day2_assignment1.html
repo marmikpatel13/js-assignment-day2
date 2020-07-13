@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LetsUpgrade Day2 Assignment 1</title>
+
+</head>
+
+<body>
+    <h1>Day 2 | Assignment 1</h1>
+    <h1>Display Current Day and Time.</h1><br>
+    <h2 id="dayname"></h2>
+    <br>
+    <h2 id="currentTime"></h2>
+
+    <script>
+        var date = new Date();
+        var currentDay = date.getDay();
+        var Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var Today = Days[currentDay];
+        document.getElementById('dayname').innerHTML = "Today is:" + " " + Today;
+
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        var prepand = (hour >= 12) ? "PM" : "AM";
+        hour = (hour >= 12) ? hour - 12 : hour;
+        if (hour == 0 && prepand == "PM") {
+            if (minutes == 0 && seconds == 0) {
+                hour = 12;
+                prepand = "Noon";
+            } else {
+                hour = 12;
+                prepand = "PM"
+            }
+        }
+        if (hour == 0 && prepand == "AM") {
+            if (minutes == 0 && seconds == 0) {
+                hour = 12;
+                prepand = "Midnight";
+            } else {
+                hour = 12;
+                prepand = "AM"
+            }
+        }
+        document.getElementById('currentTime').innerHTML = "Current time is:" + " " + hour + " " + prepand + " : " + minutes + " : " + seconds;
+    </script>
+</body>
+
+</html>
